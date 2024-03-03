@@ -55,19 +55,23 @@
     <div class="container">
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
             @foreach (var pokemon in Model)
             {
                 <!-- Card Pokemon - Inicio -->
                 <div class="col">
                     <div class="card shadow-sm cursor-pointer planta venenoso" onclick="GetInfo(001)">
-                        <img src="~/img/pokemons/001.png" class="card-img-top" width="100%" height="300" alt="Bulbasaur" />
+                        <img src="@pokemon.Imagem" class="card-img-top" width="100%" height="300" alt="Bulbasaur" />
                         <div class="card-body">
-                            <p class="card-text mb-0">Nº 001</p>
-                            <h3 class="card-title">Bulbasaur</h3>
+                            <p class="card-text mb-0">Nº @pokemon.Numero.ToString("000")</p>
+                            <h3 class="card-title">@pokemon.Nome</h3>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="#" class="btn my-2 text-white" style="background-color:#7c5">Planta</a>
-                                    <a href="#" class="btn my-2 text-white" style="background-color:#a59">Venenoso</a>
+                                    @foreach (var tipo in pokemon.Tipo)
+                                    {
+                                        <a href="#" class="btn my-2 text-white" style="background-color:#000">@tipo</a>
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>

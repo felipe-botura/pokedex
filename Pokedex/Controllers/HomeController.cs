@@ -17,7 +17,12 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         List<Pokemon> pokemons = [];
-        return View();
+        using (StreamReader leitor = new("Data\\pokemons.json"))
+        {
+            string dados = leitor.ReadToEnd();
+            pokemons = JsonSerializer.Deserialize<List<Pokemon>>(dados);
+        }
+        return View(pokemons);
     }
 
     public IActionResult Privacy()
